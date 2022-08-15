@@ -30,8 +30,11 @@ import {mapState} from "vuex";
 export default {
   name: "MyHome",
   components: {TheBrand, TheFloor, GoodsLike, GoodsRank, TodayRecommend, ListContainer},
+  // 操作dom最早的时期
   mounted() {
+    // 加载楼层列表数据
     this.$store.dispatch('getFloorList')
+
   },
   computed: {
     ...mapState({

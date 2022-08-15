@@ -84,7 +84,7 @@
                     <i class="command">已有<span>{{ item.id }}</span>人评价</i>
                   </div>
                   <div class="operate">
-                    <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                    <a href="javascript:void(0);" @click="addToCarOnce(item.id,1)" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
                     <a href="javascript:void(0);" class="sui-btn btn-bordered">收藏</a>
                   </div>
                 </div>
@@ -109,6 +109,7 @@
 <script>
 import SearchSelector from "@/views/Search/SearchSelector/SearchSelector";
 import {mapGetters} from "vuex";
+
 
 export default {
   name: "MySearch",
@@ -239,6 +240,9 @@ export default {
     setPageNo(pageNo){
       this.searchParams.pageNo = pageNo
       this.getData()
+    },
+    addToCarOnce(skuId,num){
+      console.log(skuId,num)
     }
   },
 // 监听路由变化，从而按需发起请求

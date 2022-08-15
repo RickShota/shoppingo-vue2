@@ -6,16 +6,20 @@
       <div class="container">
         <div class="loginList">
           <p>尚品汇欢迎您！</p>
-          <p>
+          <p v-if="!userName">
             <span>请</span>
             <!--声明式导航-->
             <router-link to="/login">登录</router-link>
             <router-link to="/register" class="register">免费注册</router-link>
           </p>
+          <p v-else>
+            <a href="#home">用户：{{ userName }}</a>
+            <a href="#home" class="register" @click="Logout">退出登录</a>
+          </p>
         </div>
         <div class="typeList">
-          <a href="#">我的订单</a>
-          <a href="#">我的购物车</a>
+          <router-link to="/center">我的订单</router-link>
+          <router-link to="/shopcart">我的购物车</router-link>
           <a href="#">我的尚品汇</a>
           <a href="#">尚品汇会员</a>
           <a href="#">企业采购</a>
@@ -57,6 +61,7 @@ export default {
     }
   },
   methods: {
+    // 搜索回调
     goSearch() {
       // 路由传参之 字符串形式
       // this.$router.push('/search/' + this.keyword + '?=' + this.keyword.toUpperCase())
@@ -70,14 +75,31 @@ export default {
           query: this.$route.query
         })
       }
+    },
+    // 退出登录
+    async Logout() {
+      try {
+        // 通知服务器退出,清除本地数据在vuex中执行
+        await this.$store.dispatch('logOut')
+        // 返回首页
+        await this.$router.push('/home')
+      } catch (e) {
+        console.log(e.message)
+      }
     }
   },
   mounted() {
     // 通过全局事件总线清除关键字
-    this.$bus.$on("clear",() => {
+    this.$bus.$on("clear", () => {
       this.keyword = ""
     })
-  }
+  },
+  computed: {
+    // 从仓库拿登录用户名
+    userName() {
+      return this.$store.state.users.userInfo.nickName
+    }
+  },
 }
 </script>
 
@@ -99,6 +121,10 @@ export default {
         p {
           float: left;
           margin-right: 10px;
+
+          a{
+            cursor: pointer;
+          }
 
           .register {
             border-left: 1px solid #b3aeae;

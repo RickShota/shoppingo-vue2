@@ -3,6 +3,10 @@ import Vuex from 'vuex'
 import {home} from "@/store/modules/Home";
 import {search} from "@/store/modules/Search";
 import {detail} from "@/store/modules/Detail";
+import {shopCart} from "@/store/modules/ShopCart";
+import {users} from "@/store/modules/User";
+import {trade} from "@/store/modules/Trade";
+
 
 Vue.use(Vuex)
 
@@ -19,6 +23,9 @@ export default new Vuex.Store({
   modules: {
     home,
     search,
-    detail
+    detail,
+    shopCart,
+    users,
+    trade
   }
 })

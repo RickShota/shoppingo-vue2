@@ -80,7 +80,7 @@
                 <a href="javascript:" class="mins" @click="num>1 ? num-- : num = 1">-</a>
               </div>
               <div class="add">
-                <a @click="addToCar(skuInfo.id,num)" href="#">加入购物车</a>
+                <a @click="addToCar(skuInfo.id,num)" href="javascript:void(0);">加入购物车</a>
               </div>
             </div>
           </div>
@@ -340,7 +340,7 @@ export default {
   components: {ImageList, Zoom},
   data() {
     return {
-      num: 1
+      num: 1 // 购买数量
     }
   },
   mounted() {
@@ -365,11 +365,12 @@ export default {
     },
     // 修改购买产品个数
     changeNum(e) {
+      // 格式化输入内容
       let value = e.target.value
       this.num = isNaN(value) || value < 1 ? 1 : parseInt(value)
     },
     // 加入购物车
-    addToCar(Id, Num) {
+    async addToCar(Id, Num) {
       // 发请求
       /*this.$store.dispatch('setGoodsToCart', {skuId: Id, skuNum: Num})
           .then(result => {
@@ -379,11 +380,16 @@ export default {
             alert("加入购物车失败，请稍后重试")
             console.log(error)
           })*/
-      // 尝试发请求
       try {
-        this.$store.dispatch('setGoodsToCart', {skuId: Id, skuNum: Num})
+        // 异步调用发请求
+        await this.$store.dispatch('setGoodsToCart', {skuId: Id, skuNum: Num})
+        // 将skuInfo存储到对话存储（只能接收字符串,故要转化）
+        sessionStorage.setItem("skuInfo", JSON.stringify(this.skuInfo))
         // 跳转到购物车添加成功页
-        this.$router.push('/addcartsuccess')
+        await this.$router.push({
+          path: '/addcartsuccess',
+          query: {skuNum: this.num}
+        })
       } catch (error) {
         alert("加入购物车失败，请稍后重试 >_<")
       }
@@ -602,14 +608,19 @@ export default {
               float: left;
 
               a {
-                background-color: #e1251b;
+                background-color: #ea3930;
                 padding: 0 25px;
                 font-size: 16px;
                 color: #fff;
                 height: 36px;
                 line-height: 36px;
                 display: block;
-                cursor: pointer;
+                &:hover{
+                  color: white!important;
+                  text-decoration: none;
+                  background-color: #ff2518;
+                }
+
               }
             }
           }

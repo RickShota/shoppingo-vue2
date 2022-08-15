@@ -1,8 +1,10 @@
 import {reqGetGoodsInfo, reqPostAddShopCart} from "@/api";
+import {getUUID} from "@/utils/uuid_token";
 
 export const detail = {
   state: {
     goodsInfo: {},
+    uuid_token: getUUID(),// 游客临时身份
   },
   // 简化数据
   getters: {
@@ -39,7 +41,7 @@ export const detail = {
         return "OK"
       } else {
         // 返回失败参数
-        return Promise.reject(new Error('fail'))
+        return Promise.reject(new Error(res.message))
       }
     }
   }
