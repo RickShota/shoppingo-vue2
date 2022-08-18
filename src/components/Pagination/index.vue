@@ -42,8 +42,8 @@ export default {
         start = 1
         end = totalPage
       } else { // 否则正常情况
-        start = pageNo - parseInt(continues / 2)
-        end = pageNo + parseInt(continues / 2)
+        start = pageNo - parseInt(`${continues / 2}`)
+        end = pageNo + parseInt(`${continues / 2}`)
         // 约束start|end在合理范围之内
         // 如果start小于1则固定(1~5)
         if (start < 1) {

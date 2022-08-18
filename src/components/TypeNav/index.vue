@@ -200,7 +200,7 @@ export default {
             margin: 0;
 
             a {
-              color: #333;
+              color: #333 !important;
               text-decoration: none;
               cursor: pointer;
             }
@@ -242,6 +242,10 @@ export default {
                   padding: 3px 6px 0 0;
                   font-weight: 700;
                   cursor: pointer;
+
+                  a {
+                    color: #333 !important;
+                  }
                 }
 
                 dd {
@@ -258,6 +262,10 @@ export default {
                     padding: 0 8px;
                     margin-top: 5px;
                     border-left: 1px solid #ccc;
+
+                    a {
+                      color: #333 !important;
+                    }
                   }
                 }
               }

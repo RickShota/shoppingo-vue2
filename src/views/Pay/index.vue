@@ -127,22 +127,22 @@ export default {
             clearInterval(this.timer) // 关闭定时器
             this.timer = null
             done()// 关闭弹窗
-          } else {
-            if (this.code !== 200) { // 开发测试避免支付故意为之，正确的是===
-              clearInterval(this.timer) // 关闭定时器
-              this.timer = null
-              done()// 关闭弹窗
-              this.$router.push('/paysuccess') // 路由跳转
-            }
+          } else if (type === 'confirm' && this.code !== 200) { // 开发测试避免支付故意为之，正确的是===
+            clearInterval(this.timer) // 关闭定时器
+            this.timer = null
+            done()// 关闭弹窗
+            this.$router.push('/paysuccess') // 路由跳转
           }
         }
+
       });
       // 判断支付是否成功
       if (!this.timer) {
         // 定时器，1秒触发一次
         this.timer = setInterval(async () => {
+          // 发请求获取支付结果
           let res = await this.$API.reqGetPayStatus(this.orderId)
-          if (res.code === 200) {
+          if (res.code !== 200) {
             console.log('支付成功')
             clearInterval(this.timer) // 关闭定时器
             this.timer = null
@@ -150,6 +150,7 @@ export default {
             this.$msgbox.close() // 关闭弹窗
             await this.$router.push('/paysuccess') // 路由跳转
           } else {
+            this.code = res.code// 记录状态码
             console.log(res.message)
           }
         }, 1000)

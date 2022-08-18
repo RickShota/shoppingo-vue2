@@ -3,7 +3,7 @@
 
     <div class="success">
       <h3>
-        <img src="./images/right.png" width="48" height="48">
+        <img src="./images/right.png" width="48" height="48" alt="">
         恭喜您，支付成功啦！
       </h3>
       <div class="paydetail">
@@ -20,6 +20,14 @@
 <script>
   export default {
     name: 'PaySuccess',
+    // 组件内守卫
+    beforeRouteEnter(to,from,next){
+      if (from.path==='/pay'){
+        next()
+      }else {
+        next(false)
+      }
+    }
   }
 </script>
 

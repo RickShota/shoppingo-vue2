@@ -66,10 +66,13 @@
           <div class="goods-list">
             <ul class="yui3-g">
               <!--商品详情item-->
-              <li class="yui3-u-1-5" v-for="item in goodsList" :key="item.id" >
+              <li class="yui3-u-1-5" v-for="item in goodsList" :key="item.id">
                 <div class="list-wrap">
                   <div class="p-img">
-                    <router-link :to="`/detail/${item.id}`"><img :src="item.defaultImg" alt=""/></router-link>
+                    <router-link :to="`/detail/${item.id}`">
+                      <!--图片懒加载-->
+                      <img v-lazy="item.defaultImg"/>
+                    </router-link>
                   </div>
                   <div class="price">
                     <strong>
@@ -84,7 +87,8 @@
                     <i class="command">已有<span>{{ item.id }}</span>人评价</i>
                   </div>
                   <div class="operate">
-                    <a href="javascript:void(0);" @click="addToCarOnce(item.id,1)" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                    <a href="javascript:void(0);" @click="addToCarOnce(item.id,1)" target="_blank"
+                       class="sui-btn btn-bordered btn-danger">加入购物车</a>
                     <a href="javascript:void(0);" class="sui-btn btn-bordered">收藏</a>
                   </div>
                 </div>
@@ -98,7 +102,7 @@
               :page-size="searchParams.pageSize"
               :continues="5"
               :total="total"
-          @getPageNo="setPageNo">
+              @getPageNo="setPageNo">
           </my-pagination>
         </div>
       </div>
@@ -134,7 +138,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['goodsList', 'attrsList', 'trademarkList','total']),
+    ...mapGetters(['goodsList', 'attrsList', 'trademarkList', 'total']),
     isOne() {
       return this.searchParams.order.indexOf('1') !== -1
     },
@@ -237,12 +241,12 @@ export default {
       this.getData()
     },
     // 改变页面
-    setPageNo(pageNo){
+    setPageNo(pageNo) {
       this.searchParams.pageNo = pageNo
       this.getData()
     },
-    addToCarOnce(skuId,num){
-      console.log(skuId,num)
+    addToCarOnce(skuId, num) {
+      console.log(skuId, num)
     }
   },
 // 监听路由变化，从而按需发起请求
