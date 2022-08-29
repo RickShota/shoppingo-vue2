@@ -2,7 +2,7 @@
  * API统一管理
  */
 
-import requests from "@/api/ajax";
+import requests from "@/api/axiosAjax";
 import mockRequests from "@/api/mockAjax";
 // 获取三级菜单接口
 export const reqCategoryList = () => requests.get('/product/getBaseCategoryList', {})
