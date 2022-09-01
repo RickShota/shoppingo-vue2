@@ -56,7 +56,8 @@ router.beforeEach(async (to, from, next) => {
         to.path === '/pay' ||
         to.path === '/trade'
     ) {
-      next('/login?redirect=' + to.path) // 强制跳转到登录页,且添加query参数便于登录后跳转
+      // 强制跳转到登录页,且添加query参数便于登录后跳转
+      next('/login?redirect=' + to.path)
       console.log('未登录，禁止跳转到该页面')
     } else {
       console.log('未登录，限制访问')

@@ -225,7 +225,7 @@ export default {
     changeOrder(flag) {
       /** Flag代表综合1(默认)/价格2
        *  Sort代表升序/降序
-       *  获取最开始的状态*/
+       *  获取最开始的状态 */
       let originFlag = this.searchParams.order.split(":")[0]
       let originSort = this.searchParams.order.split(":")[1]
       // 新排序属性暂存

@@ -66,6 +66,7 @@
 
       </div>
       <div class="choose-order">
+        <!--分页器-->
         <my-pagination
             :page-no="page"
             :page-size="limit"
@@ -168,9 +169,9 @@ export default {
       }
     },
     // 获取当前点击那一页
-    getPageNo(page){
+    getPageNo(page) {
       this.page = page
-      this.getData(this.page,this.limit)
+      this.getData(this.page, this.limit)
     }
   },
 

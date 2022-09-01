@@ -85,6 +85,7 @@ export default [
     path: '/pay',
     component: Pay,
     meta: {show: true},
+    // 路由独享守卫
     beforeEnter: (to, from, next) => {
       if (from.path === '/trade') {
         next()

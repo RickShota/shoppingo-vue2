@@ -134,7 +134,6 @@ export default {
             this.$router.push('/paysuccess') // 路由跳转
           }
         }
-
       });
       // 判断支付是否成功
       if (!this.timer) {
