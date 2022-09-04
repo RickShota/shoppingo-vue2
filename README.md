@@ -1,21 +1,46 @@
 # shoppingo-vue2
 
-学完vue后的第一个vue2电脑端项目，来自[bilibili尚品汇](https://www.bilibili.com/video/BV1Vf4y1T7bw?p=2&spm_id_from=pageDriver&vd_source=c074cfcb590f03ed244ef1b7890c7837)
+学完vue后的第一个vue2练手项目
 
-耗时17天完成，收获良多
+耗时15天完成，收获良多
 
-### 技术栈
+## 技术选型
+1. 前台数据处理/交互/组件化
+   - vue2
+   - vuex
+   - vue-router
+   - vue-lazyload
+   - vue-validate
+   - element-ui
+   - swiper
+   - moment
+2. 前后台交互
+   - axios
+   - mock.js
+   - postman
+3. 模块化
+   - ES6
+   - babel
+4. 工程化
+   - webpack
+   - vue-cli@4
+   - eslint
+5. css预编译
+   - less
+6. 其他插件
+   - lodash.js
+   - uuid.js
+   - nprogress.js
 
-- vue2全家桶（vuex、vue-cli、vue-router）
-- axios二次封装
-- 少量的element-UI
-- mock.js、lodash.js、swiper、vee-validate、vue-lazyload、nprogress等第三方插件
 
-### 每日笔记
+---
+
+# 每日笔记
 # Day01
 ### 1.脚手架使用
 
 `vue init webpack 项目名称`
+
 `vue create 项目名称`
 
 ### 2.脚手架基本目录
@@ -129,7 +154,10 @@ module.exports = {
 ##### 移除文件
 
 `git rm -f index.js（仓库&工作区）`
+
 `git rm --cached index.js（保留工作区）`
+
+#### 4.1.在WebStorm中将本地仓库与GitHub绑定
 
 *参考：[歪歪坨的博客-CSDN博客_webstorm绑定github](https://blog.csdn.net/qq_37954460/article/details/120628439)*
 
