@@ -1,10 +1,14 @@
 # shoppingo-vue2
 
-学完vue后的第一个vue2练手项目
+学完vue后的第一个vue2练手项目，耗时15天完成，收获良多
 
-耗时15天完成，收获良多
+## 项目概要
+
+仿淘宝（旧）PC端电商网站前端业务逻辑实现，采用vue2全家桶开发，包括首页、分类列表、商品详情、购物车、订单支付、用户登陆/注册等多个子模块。后端接口来自第三方。
+
 
 ## 技术选型
+
 1. 前台数据处理/交互/组件化
    - vue2
    - vuex
@@ -32,11 +36,12 @@
    - uuid.js
    - nprogress.js
 
-
 ---
 
 # 每日笔记
+
 # Day01
+
 ### 1.脚手架使用
 
 `vue init webpack 项目名称`
@@ -47,7 +52,7 @@
 
 ##### public + assets文件夹区别：
 
-​	*通常将外部的第三方的文件放在public中，自己的文件放在assets中。*
+​    *通常将外部的第三方的文件放在public中，自己的文件放在assets中。*
 
 1. **public文件夹**
 
@@ -61,15 +66,15 @@
 
 ##### node_modules：
 
-​	放置项目依赖的地方
+​ 放置项目依赖的地方
 
 ##### src：
 
-​	程序员源代码文件夹
+​ 程序员源代码文件夹
 
-##### 	components：
+##### components：
 
-​	一般放置非路由组件（或者项目共用的组件）
+​ 一般放置非路由组件（或者项目共用的组件）
 
 ##### 其他独立文件：
 
@@ -87,9 +92,9 @@
 
 ```json
 "scripts": {
-	"serve": "vue-cli-service serve --open",
-	"build": "vue-cli-service build",
-	"lint": "vue-cli-service lint"
+"serve": "vue-cli-service serve --open",
+"build": "vue-cli-service build",
+"lint": "vue-cli-service lint"
 },
 ```
 
@@ -110,22 +115,20 @@ module.exports = {
 
 ```json
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ]
-        }
-    },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+   "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+         "@/*": [
+            "src/*"
+         ]
+      }
+   },
+   "exclude": [
+      "node_modules",
+      "dist"
+   ]
 }
 ```
-
-
 
 ### 4.项目上传Git
 
@@ -160,8 +163,6 @@ module.exports = {
 #### 4.1.在WebStorm中将本地仓库与GitHub绑定
 
 *参考：[歪歪坨的博客-CSDN博客_webstorm绑定github](https://blog.csdn.net/qq_37954460/article/details/120628439)*
-
-
 
 ### 5.路由的配置
 
@@ -199,12 +200,20 @@ module.exports = {
 
 ```js
 /*路由重定向*/
-{path: '/', redirect: '/home'},
+{
+   path: '/', redirect
+:
+   '/home'
+}
+,
 /*登录页*/
-{path: '/login', component: Login},
+{
+   path: '/login', component
+:
+   Login
+}
+,
 ```
-
-
 
 ### 6.创建非路由组件
 
@@ -229,11 +238,9 @@ module.exports = {
 
 1. 安装less ：`less-loader@5`
 
-    *切记 less-loader安装 5版本，不要安装在最新版本，安装最新版本less-loader会报错，报的错误setOption函数未定义*
+   *切记 less-loader安装 5版本，不要安装在最新版本，安装最新版本less-loader会报错，报的错误setOption函数未定义*
 
 2. 需要在style标签的身上加上lang="less"，不添加样式不生效
-
-
 
 ### 7.路由的跳转
 
@@ -244,8 +251,6 @@ module.exports = {
 
 *编程式导航更好用：因为可以书写自己的业务逻辑*
 
-
-
 **面试题：**
 
 **问：** v-show与v-if区别?
@@ -255,8 +260,6 @@ module.exports = {
 **问：** 开发项目的时候，优化手段有哪些?
 
 **答：** 1. v-show|v-if 2. 按需加载
-
-
 
 ### 8.配置路由元信息
 
@@ -272,8 +275,6 @@ module.exports = {
 
 - 定义路由时加`mate:{key: boolen}`
 - 使用时在组件种通过`$route.meta.key`访问值
-
-
 
 ### 9.路由传参
 
@@ -304,13 +305,13 @@ module.exports = {
 **答：** 可以，且有三种写法：
 
 （1）布尔值写法:params
-	`props:true`
+`props:true`
 
 （2）对象写法:额外给路由组件传递一些props
-	`props:{a:1,b:2}`
+`props:{a:1,b:2}`
 
 （3）函数写法：可以params参数、query参数，通过props传递给路由组件
-	`props:($route)=>({keyword:$route.params.keyword,k:$route.query.k})`
+`props:($route)=>({keyword:$route.params.keyword,k:$route.query.k})`
 
 # day02
 
@@ -319,11 +320,11 @@ module.exports = {
 ##### $router和$route
 
 - $router：进行编程式导航的路由跳转
-`this.$router.push|this.$router.replace`
+  `this.$router.push|this.$router.replace`
 - $route：可以获取路由的信息|参数
-`this.$route.path`
-`this.$route.params|query`
-`this.$route.meta`
+  `this.$route.path`
+  `this.$route.params|query`
+  `this.$route.meta`
 
 **问题：** 编程式导航路由跳转到当前路由(参数不变), 多次执行会抛出NavigationDuplicated的警告错误?
 
@@ -375,14 +376,11 @@ recommend（推荐）
 
 开发文档：[nprogress的简介及使用教程 - Made with Vuejs](https://madewith.cn/23)
 
-
-
 ### 4.复习vuex
 
 vuex：Vue官方提供的一个插件，插件可以管理项目共用数据。
 vuex：书写任何项目都需要vuex？
 项目大的时候，需要有一个地方‘统一管理数据’即为仓库store
-
 
 # day03
 
@@ -396,22 +394,24 @@ let copyPush = VueRouter.prototype.push;
 let copyReplace = VueRouter.prototype.replace;
 // 重写push|replace
 VueRouter.prototype.push = function (location, resolve, reject) {
-  if (resolve && reject) {
-    copyPush.call(this, location, resolve, reject)
-  } else {
-    copyPush.call(this, location, () => {}, () => {})
-  }
+   if (resolve && reject) {
+      copyPush.call(this, location, resolve, reject)
+   } else {
+      copyPush.call(this, location, () => {
+      }, () => {
+      })
+   }
 }
 VueRouter.prototype.replace = function (location, res, rej) {
-  if (res && rej) {
-    copyReplace.call(this, location, res, rej)
-  } else {
-    copyReplace.call(this, location, () => {}, () => {})
-  }
+   if (res && rej) {
+      copyReplace.call(this, location, res, rej)
+   } else {
+      copyReplace.call(this, location, () => {
+      }, () => {
+      })
+   }
 }
 ```
-
-
 
 ### 2.axios二次封装
 
@@ -476,9 +476,9 @@ state、actions、mutations、getters、modules
    }
    ```
 
-    - mounted：模板已经变为真是DOM（只不过没有数据，显示空白），因为ajax是异步，需要时间。
+   - mounted：模板已经变为真是DOM（只不过没有数据，显示空白），因为ajax是异步，需要时间。
 
-    - created：稍微好那么一丢丢（不算啥）
+   - created：稍微好那么一丢丢（不算啥）
 
 6. 在组件中从vuex仓库拿数据渲染
 
@@ -494,18 +494,18 @@ state、actions、mutations、getters、modules
 
 ```json
 categoryList:[
-    {
-        id:1,categoryName:'一级分类',
-        child:[
-             {id:3.14,
-              categoryName:'二级分类'，
-              child:[
-                   {id:4,categoryName:'三级分类'}
-              	]
-             }
-        ]
-    },
-		...
+{
+id: 1, categoryName: '一级分类',
+child:[
+{id: 3.14,
+categoryName: '二级分类'，
+child:[
+{id: 4, categoryName: '三级分类'}
+]
+}
+]
+},
+...
 ]
 ```
 
@@ -519,19 +519,19 @@ categoryList:[
 
 - 第二种解决方案：js 的DOM事件
 
-
-
 ### 6.动态展示三层分类联动结构
 
 #### 第一层循环
 
 ```html
+
 <div v-for="(c1,index) in categoryList" :key="c1.categoryId"></div>
 ```
 
 #### 第二层循环
 
 ```html
+
 <div v-for="(c2,index) in c1.child" :key="c2.categoryId"></div>
 ```
 
@@ -540,8 +540,6 @@ categoryList:[
 ```html
 <em v-for="(c3,index) in c2.child" :key="c3.categoryId"></em>
 ```
-
-
 
 ### 7.函数防抖与节流
 
@@ -560,8 +558,6 @@ categoryList:[
 - 函数防抖与节流
 - 按需加载
 
-
-
 ### 8.路由的跳转与传参
 
 ##### 第一种声明式导航：router-link
@@ -577,13 +573,13 @@ categoryList:[
 
 ```js
 this.$router.push(
-	{ 
- 		name:'search',
- 		query:{
-   		categoryName:'电子书',
-    	category2Id:4
- 		}
-	}
+        {
+           name: 'search',
+           query: {
+              categoryName: '电子书',
+              category2Id: 4
+           }
+        }
 )
 ```
 
@@ -597,8 +593,6 @@ this.$router.push(
 2. 防抖与节流【面试经常出现】
 3. vuex可以模块式开发
 4. vuex经常用的套路是state、mutations、actions、getters、modules
-
-
 
 ## 1.搜索模块中的三级联动与过渡动画
 
@@ -617,8 +611,6 @@ this.$router.push(
 
 - 开发者工具中可以看见组件的名字
 - 注册全局组件的时候，可以通过组件实例获取相应组件的名字
-
-
 
 ## 2.TypeNav组件业务分析
 
@@ -649,8 +641,6 @@ this.$router.push(
 
 路由跳转的时候，相应的组件会把重新销毁与创建----【kepp-alive】
 
-
-
 ## 3.过渡效果
 
 最早接触过渡的时候：CSS3 的 transition 属性
@@ -661,8 +651,6 @@ Vue当中也有过渡动画效果：transition内置组件
 
 在Vue当中，你可以给 （某一个节点）|（某一个组件）添加过渡动画效果
 但是需要注意，节点|组件务必出现v-if|v-show指令才可以使用。
-
-
 
 ## 4.TypeNav三级联动性能优化?
 
@@ -683,17 +671,13 @@ home切换到search或者search切换到home，你会发现一件事情，组件
 
 #### 4.3 优化方案
 
-
-
-
-
 ## 5.开发listContainer|Floor组件业务
 
 #### 5.1 Web应用前后端分离:
 
 1. 后台向前台提供API接口, 只负责数据的提供和计算，而完全不处理展现
 
-2. 前台通过Http(Ajax)请求获取数据,　在浏览器端动态构建界面显示数据
+2. 前台通过Http(Ajax)请求获取数据, 在浏览器端动态构建界面显示数据
 
 #### 5.2 mock数据
 
@@ -710,24 +694,23 @@ home切换到search或者search切换到home，你会发现一件事情，组件
 - 第二步：在src文件夹下创建一个文件夹，文件夹mock文件夹。
 - 第三步：准备模拟的数据
 
-​	*把mock数据需要的图片放置于public文件夹中，比如:listContainer中的轮播图的数据*
+​    *把mock数据需要的图片放置于public文件夹中，比如:listContainer中的轮播图的数据*
 
 - 第四步：在mock文件夹中创建一个server.js文件
 
-​	*注意：在server.js文件当中对于banner.json||floor.json的数据没有暴露，但是可以在server模块中使用。对于webpack当中一些模块：图片、json，不需要对外暴露，因为默认就是对外暴露。*
+​    *
+注意：在server.js文件当中对于banner.json||floor.json的数据没有暴露，但是可以在server模块中使用。对于webpack当中一些模块：图片、json，不需要对外暴露，因为默认就是对外暴露。*
 
 - 第五步：通过mock模块模拟出数据，通过`Mock.mock`方法进行模拟数据
 - 第六步：回到入口文件，引入serve.js
 
-​	*mock需要的数据|相关mock代码页书写完毕，关于mock当中serve.js需要执行一次，如果不执行，和你没有书写一样的。*
+​    *mock需要的数据|相关mock代码页书写完毕，关于mock当中serve.js需要执行一次，如果不执行，和你没有书写一样的。*
 
 - 第七步：在API文件夹中创建mockRequest【axios实例：baseURL:'/mock'】
 
-​	*专门获取模拟数据用的axios实例。*
+​    *专门获取模拟数据用的axios实例。*
 
 在开发项目的时候：切记，单元测试，某一个功能完毕，一定要测试是否OK
-
-
 
 ## 6.存储数据，存储于vuex
 
@@ -736,8 +719,6 @@ home切换到search或者search切换到home，你会发现一件事情，组件
 - 获取服务器数据
 - 展示数据
 - 开发动态业务
-
-
 
 ## 7.swiper基本的使用
 
@@ -763,7 +744,7 @@ swiper最新版本为7版本的，项目当中使用的是5版本
 ---对于咱们而言，后台老师确实没有给首页中轮播这部分的接口，mock数据，你可以当中一个真实接口就行了。
 上线的时候，对于mock数据对于项目而言没有任何影响。
 
-对于项目而言:真实的接口 /api/xxxx    模拟的数据/mock/xxxx
+对于项目而言:真实的接口 /api/xxxx 模拟的数据/mock/xxxx
 模拟数据JSON：没有空格，最好使用格式化插件进行格式化。
 
 ## 2.swiper插件
@@ -803,8 +784,6 @@ swiper插件：可以在移动端、PC端都可以使用，这个插件经常可
 但是这种解决方案存在风险（无法确定用户请求到底需要多长时间），因此没办法确定
 延迟器时间。
 
-
-
 #### 2.2 Swiper在Vue项目中使用完美解决方案
 
 第一种解决方案问题出现在哪里：v-for,在遍历来自于Vuex（数据:通过ajax向服务器发请求，存在异步）
@@ -823,11 +802,6 @@ bannerList仓库数据有没有发生过变化？
 
 在下次DOM更新, 循环结束之后,执行延迟回调。在 修改数据之后 立即使用这个方法，获取更新后的DOM。
 **注意：** 组件实例的$nextTick方法，在工作当中经常使用，经常结合第三方插件使用，获取更新后的DOM节点
-
-
-
-
-
 
 ## 3.开发Floor组件
 
@@ -861,8 +835,6 @@ Floor组件结构可能没有完整，但是服务器的数据回来以后Floor�
 ，因此v-for在遍历来自于服务器的数据，如果服务器的数据有了，Floor结构一定的完整的。
 否则，你都看不见Floor组件
 
-
-
 ## 4.carousel全局组件
 
 如果项目当中出现类似的功能，且重复利用，封装为全局组件----【不封装也可以】
@@ -870,15 +842,12 @@ Floor组件结构可能没有完整，但是服务器的数据回来以后Floor�
 为了封装全局的轮播图组件:让Floor与listContainer组件中的代码一样，如果一样完全可以独立出来
 封装为一个全局组件。
 
-
 # day06
 
 #### 复习：
 
 1. swiper|lodash|moment插件工作的时候经常使用----【API：有时间翻看一下】
 2. $nextTick,组件实例的方法。在下次DOM更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
-
-
 
 ## 1.合并参数
 
@@ -898,8 +867,6 @@ Floor组件结构可能没有完整，但是服务器的数据回来以后Floor�
 #### 1.4 路由跳转（home->search）
 
 两个地方，三级联动（typeNav）、Header组件（搜索按钮）
-
-
 
 ## 2.完成search静态组件
 
@@ -927,16 +894,36 @@ bread面包屑
 
 ```js
 {
-  "category1Id": "1",//一级分类的id
-  "category2Id": "12",//二级分类的id
-  "category3Id": "123",//三级分类的id
-  "categoryName": "手机",//产品的名字
-  "keyword": "小米",//关键字
-  "order": "1:desc",//排序
-  "pageNo": 1,//当前第几页
-  "pageSize": 10,//每一页需要展示多少条数据
-  "props": ["1:1700-2799:价格", "2:6.65-6.74英寸:屏幕尺寸"],//平台属性的选择参数
-  "trademark": "4:小米"//品牌参数
+   "category1Id"
+:
+   "1",//一级分类的id
+           "category2Id"
+:
+   "12",//二级分类的id
+           "category3Id"
+:
+   "123",//三级分类的id
+           "categoryName"
+:
+   "手机",//产品的名字
+           "keyword"
+:
+   "小米",//关键字
+           "order"
+:
+   "1:desc",//排序
+           "pageNo"
+:
+   1,//当前第几页
+           "pageSize"
+:
+   10,//每一页需要展示多少条数据
+           "props"
+:
+   ["1:1700-2799:价格", "2:6.65-6.74英寸:屏幕尺寸"],//平台属性的选择参数
+           "trademark"
+:
+   "4:小米"//品牌参数
 }
 ```
 
@@ -968,10 +955,8 @@ vuex中定义异步请求，并将结果转存到仓库
 
 ##### 请求的性能优化：
 
-发一个请求，需要向服务器携带参数：带100个参数   带1参数  【消耗宽带】
+发一个请求，需要向服务器携带参数：带100个参数 带1参数 【消耗宽带】
 对于给服务器携带的参数：如果数值为undefind，向服务器发请求的时候，参数步携带给服务器的
-
-
 
 ## 6.面包屑的业务完成
 
@@ -1015,7 +1000,6 @@ v-if 和 v-show 都能实现元素的显示隐藏
 
 如果在运行时条件很少改变，则使用 v-if 较好
 
-
 # day07
 
 学会套路最重要：
@@ -1037,12 +1021,24 @@ tradeMark---品牌
 // 尺寸: 中、短
 // 材料: 塑料、涤纶
 [
-    {attrId:1,attrName:尺寸,attrValueList:['中','短']},
-    {attrId:2,attrName:材料,attrValueList:['塑料','涤纶']},
+   {
+      attrId: 1,
+      attrName: 尺寸,
+      attrValueList: [
+         '中',
+         '短'
+      ]
+   },
+   {
+      attrId: 2,
+      attrName: 材料,
+      attrValueList: [
+         '塑料',
+         '涤纶'
+      ]
+   }
 ]
 ```
-
-
 
 ## 2.完成品牌与平台属性的业务
 
@@ -1061,11 +1057,9 @@ tradeMark---品牌
 经典面试题：数组去重（多种方法）
 
 平台属性携带参数格式：
-props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示例: ["2:6.0～6.24英寸:屏幕尺寸"]
+props Array N 商品属性的数组: ["属性ID:属性值:属性名"]   示例: ["2:6.0～6.24英寸:屏幕尺寸"]
 
 `props:['属性的ID:属性值:属性名']`
-
-
 
 ## 3.完成排序业务
 
@@ -1102,14 +1096,11 @@ props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示�
 
 根据asc|desc区分它用哪一个箭头【上、下】
 
-
-
 ## 5.分页功能
 
 第三方插件：ElementUI实现超级简单
 
 但是咱们需要自己封装。也属于前台项目当中比较重要的一部分。
-
 
 # day08
 
@@ -1124,8 +1115,6 @@ props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示�
 注意1：在书写项目的时候,需要注释清楚！
 注意2：单元测试，完成一个功能测试是否OK【打印、vue开发者工具】
 注意3：每一次书写的时候，都有小bug【解决bug能力】
-
-
 
 ## 1.分页器业务
 
@@ -1154,30 +1143,29 @@ props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示�
 
 ###### 特殊情况分析：
 
-已知条件: total=【99】  pageSize =【3】  pageNo=6    continues 5
+已知条件: total=【99】 pageSize =【3】 pageNo=6 continues 5
 
 4 5 6 7 8
 
-
-已知条件: total=【99】  pageSize =【3】  pageNo= 1    continues 5
+已知条件: total=【99】 pageSize =【3】 pageNo= 1 continues 5
 
 错误:-1 0 1 2 3
 正确: 1 2 3 4 5
 
-已知条件: total=【99】  pageSize =【3】  pageNo= 2    continues 5
+已知条件: total=【99】 pageSize =【3】 pageNo= 2 continues 5
 
 错误: 0 1 2 3 4
 正确：1 2 3 4 5
 
-已知条件: total=【99】  pageSize =【3】  pageNo= 33    continues 5
+已知条件: total=【99】 pageSize =【3】 pageNo= 33 continues 5
 
-错误: 31 32  33 34 35
-正确：29 30  31 32 33
+错误: 31 32 33 34 35
+正确：29 30 31 32 33
 
-已经条件: total=【99】  pageSize =【3】  pageNo= 32    continues 5
+已经条件: total=【99】 pageSize =【3】 pageNo= 32 continues 5
 
 错误：30 31 32 33 34
-正确: 29 30  31 32 33
+正确: 29 30 31 32 33
 
 ## 2.分页器封装
 
@@ -1194,10 +1182,8 @@ props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示�
 #### 2.2 特殊需求
 
 记忆功能这个需求可以书写、可以不书写【正常说：没有这个需求的】
-比如:2021年10月30日11:47:44 点击分页器   第四页 ->网站关闭了
-但是2021年11月11日11:48:12  打开这个项目 第四页 -->本地存储
-
-
+比如:2021年10月30日11:47:44 点击分页器 第四页 ->网站关闭了
+但是2021年11月11日11:48:12 打开这个项目 第四页 -->本地存储
 
 #### 总结:
 
@@ -1210,18 +1196,15 @@ props	 Array	 N	  商品属性的数组: ["属性ID:属性值:属性名"]   示�
 5. 自定义事件【子给父通信的】
 
 
-
 - push与replace区别?
 
 编程式导航：push 与 replace
 
-能不能记录历史记录：push（能记住历史记录）  replace（不能记住历史记录）
+能不能记录历史记录：push（能记住历史记录） replace（不能记住历史记录）
 
 目前项目当中：进行路由跳转（编程式导航）基础都是push
 
 push与replace是有区别的
-
-
 
 ## 3.开发详情业务
 
@@ -1229,8 +1212,6 @@ push与replace是有区别的
 2. 拆分组件
 3. 获取服务器动态展示
 4. 完成动态业务
-
-
 
 ## 4.滚动行为的设置
 
@@ -1244,12 +1225,12 @@ push与replace是有区别的
 
 ```js
 const router = new VueRouter({
-  routes,
-  base: '/shopgovue2/',
-  // 滚动行为:路由跳转后自动返回顶部
-  scrollBehavior() {
-    return {y: 0}
-  }
+   routes,
+   base: '/shopgovue2/',
+   // 滚动行为:路由跳转后自动返回顶部
+   scrollBehavior() {
+      return {y: 0}
+   }
 })
 ```
 
@@ -1290,34 +1271,35 @@ $refs获取节点（DOM：必须要定位），通过JS动态修改left|top、�
 具体实现：
 
 ```js
-handler(e) {
-      const mask = this.$refs.mask
-      const big = this.$refs.big
-      // 计算mask相对盒子横向移动距离
-      let left = e.offsetX - mask.offsetWidth / 2
-      // 计算mask相对盒子纵向移动距离
-      let top = e.offsetY - mask.offsetHeight / 2
-      // 约束范围
-      if (left < 0) left = 0
-      if (top < 0) top = 0
-      if (left > mask.offsetWidth) left = mask.offsetWidth
-      if (top > mask.offsetHeight) top = mask.offsetHeight
-      // 修改元素位移
-      mask.style.left = left + 'px'
-      mask.style.top = top + 'px'
-      big.style.left = -2 * left + 'px'
-      big.style.top = -2 * top + 'px'
-    }
+handler(e)
+{
+   const mask = this.$refs.mask
+   const big = this.$refs.big
+   // 计算mask相对盒子横向移动距离
+   let left = e.offsetX - mask.offsetWidth / 2
+   // 计算mask相对盒子纵向移动距离
+   let top = e.offsetY - mask.offsetHeight / 2
+   // 约束范围
+   if (left < 0) left = 0
+   if (top < 0) top = 0
+   if (left > mask.offsetWidth) left = mask.offsetWidth
+   if (top > mask.offsetHeight) top = mask.offsetHeight
+   // 修改元素位移
+   mask.style.left = left + 'px'
+   mask.style.top = top + 'px'
+   big.style.left = -2 * left + 'px'
+   big.style.top = -2 * top + 'px'
+}
 ```
 
 扩展：DOM API的事件对象
 
 ```js
-e.offsetX/Y // 鼠标相对于当前元素边框的坐标
-e.clientX/Y // 鼠标相对于浏览器窗口的坐标
-e.pageX/Y   // 鼠标相对于整个HTML页面的坐标
-e.screenX/Y // 鼠标相对于屏幕的坐标
-e.offsetWidth/Height // 获得元素的宽高（无单位，包含padding和border）
+e.offsetX / Y // 鼠标相对于当前元素边框的坐标
+e.clientX / Y // 鼠标相对于浏览器窗口的坐标
+e.pageX / Y   // 鼠标相对于整个HTML页面的坐标
+e.screenX / Y // 鼠标相对于屏幕的坐标
+e.offsetWidth / Height // 获得元素的宽高（无单位，包含padding和border）
 ```
 
 ## 2.产品购买个数业务
@@ -1334,8 +1316,7 @@ e.offsetWidth/Height // 获得元素的宽高（无单位，包含padding和bord
 项目：点击加入购物车按钮的时候，以前经常进行路由跳转【调到另外一个路由】，
 但是你要注意，点击加入购物车这个按钮的时候，将用户选择产品，提交给服务器进行存储，如果服务器存储成功，之后在进行路由跳转
 
-
-#  day10
+# day10
 
 前台项目三个重要地方：分页器、购物车、登录注册。
 
@@ -1356,8 +1337,6 @@ e.offsetWidth/Height // 获得元素的宽高（无单位，包含padding和bord
 - pending（执行中）
 - Resolved（成功，又称fulfilled）
 - rejected（拒绝）
-
-
 
 ## 1.加入购物车成功组件的业务
 
@@ -1391,18 +1370,16 @@ e.offsetWidth/Height // 获得元素的宽高（无单位，包含padding和bord
  *  每次执行不能发生变化，游客身份持久储存
  */
 export const getUUID = () => {
-  // 本地储存有就不生成，没有就生成
-  let uuid_token = localStorage.getItem("uuid_token")
-  let token = getToken();
-  if (!token && !uuid_token) {
-    uuid_token = uuidv4()
-    localStorage.setItem("uuid_token", uuid_token)
-  }
-  return uuid_token
-}
+           // 本地储存有就不生成，没有就生成
+           let uuid_token = localStorage.getItem("uuid_token")
+           let token = getToken();
+           if (!token && !uuid_token) {
+              uuid_token = uuidv4()
+              localStorage.setItem("uuid_token", uuid_token)
+           }
+           return uuid_token
+        }
 ```
-
-
 
 #### 2.2 设计购物车的数据
 
@@ -1412,19 +1389,17 @@ export const getUUID = () => {
 当组件在获取购物车的数据时候，不就是最新的数值【用户刷新刷不掉】
 
 产品个数变化接口参数：
-skuID	string	商品ID
+skuID string 商品ID
 
 skuNum：在修改产品个数的时候,需要给服务器传递的是【变化的数值】
 
-比如：佩奇  起始数量 4  用户在表单元素中输入 6   ----->给服务器参数是2
-佩奇  起始数量4    用户在表单元素中输入1   ------>给服务器的参数-3
-佩奇  起始的数量4   用户在表单元素中输入4  ------>给服务器的参数0
-
+比如：佩奇 起始数量 4 用户在表单元素中输入 6 ----->给服务器参数是2
+佩奇 起始数量4 用户在表单元素中输入1 ------>给服务器的参数-3
+佩奇 起始的数量4 用户在表单元素中输入4 ------>给服务器的参数0
 
 blur:失去焦点--->点击空白的地方
 change:文本需要有变化，而且还需要点击空白的地方
 input:只要文本发生变化立马执行【不许点击空白的地方】
-
 
 # day11
 
@@ -1434,19 +1409,15 @@ input:只要文本发生变化立马执行【不许点击空白的地方】
 注意:函数防抖与节流【面试经常出现】
 注意:用户有两个身份【临时游客、用户】
 
-
-
 ## 1.删除购物车中的产品的操作
 
 步骤：dispatch派发删除请求，actions中定义异步请求，成功返回OK，失败返回Promise的error
 
 注意：常用请求方法有post、get、delete，本次使用delete
 
-
-
 ## 2.购物车产品选中与未选中业务
 
-购物车中产品的数据：isChecked属性，1：代表这个产品勾选中   0:代表这个产品没有被选中
+购物车中产品的数据：isChecked属性，1：代表这个产品勾选中 0:代表这个产品没有被选中
 
 发请求，刷新页面
 
@@ -1461,7 +1432,6 @@ input:只要文本发生变化立马执行【不许点击空白的地方】
 目前而言：是没有这个接口，一次修改全部产品的选中状态接口【正常工作当中一定是有这样的接口：一次全部修改选中状态】
 全选复选框：如果它勾上，顶上全部的产品的选中状态，勾上
 全选复选框：如果它没勾上，顶上的全部产品的选装中台，没勾上
-
 
 vuex:minStore[小仓库state、getters、dispatch、commit]
 
@@ -1490,14 +1460,11 @@ vuex:minStore[小仓库state、getters、dispatch、commit]
 获取验证码
 /api/user/passport/sendCode/{phone}
 
-
 # day12
 
 token面试题：项目当中token过期、失效如何处理？
 
 答：清除本地token（本地存储），让用户回到登录页，获取最新的token
-
-
 
 ## 1.登录注册业务
 
@@ -1516,8 +1483,6 @@ token面试题：项目当中token过期、失效如何处理？
 #### 1.3 token
 
 【令牌：字符串，服务器下发给用户的身份凭证】
-
-
 
 ## 2.用户登录以后获取用户信息进行展示
 
@@ -1550,8 +1515,6 @@ A2：每一个组件都在mounted里面发起获取用户信息，进行展示�
 home->search[用户信息刷新数据就没了，因为在search模块当中根本没有发请求获取用户信息]
 search-detail[根本没有获取用户信息进行展示]
 
-
-
 ## 3.退出登录
 
 #### 3.1 发请求
@@ -1568,8 +1531,6 @@ search-detail[根本没有获取用户信息进行展示]
 用户已经登录了，用户想从home路由跳转到login路由，不应该这么操作了。
 现在用户登录以后，home路由不应该跳转到login路由当中【因为登陆了】，
 但是咱们以现在认知【技术】，没办法约束从home调到login
-
-
 
 ## 4.导航守卫
 
@@ -1593,8 +1554,6 @@ console.log('守卫:路由跳转完毕才会执行一次')
 组件内守卫：
 也是负责某一个路由守卫
 
-
-
 ## 5.身份凭证问题
 
 以后登录：
@@ -1602,8 +1561,6 @@ console.log('守卫:路由跳转完毕才会执行一次')
 TOKEN身份为大
 
 UUID生成的临时身份次之
-
-
 
 # day13
 
@@ -1626,15 +1583,7 @@ UUID生成的临时身份次之
 但是从今天开始，咱们要练习不用Vuex改如何开发？
 请求配置,类似$bus使用
 
-
-
-
-
 ## 2.展示商品清单数据
-
-
-
-
 
 ## 3.提交订单业务
 
@@ -1646,7 +1595,6 @@ UUID生成的临时身份次之
 
 `axios({url:'xxx',methods:'post',data:{a:1}})`
 
-
 3.1微信支付、支付宝支付等等
 交易编码（服务器：字符串hash）
 收件人名字
@@ -1655,24 +1603,23 @@ UUID生成的临时身份次之
 买家留言信息
 支付产品
 
-
-
 ## 4.获取支付信息进行展示
 
 异步方法，async/await
 
 ```js
-async getPayInfo() {
-  let res = await this.$API.reqGetPayInfo(this.orderId)
-  if (res.code === 200) {
-    this.payInfo = res.data
-  } else {
-    console.log(res.message)
-  }
-},
+async
+getPayInfo()
+{
+   let res = await this.$API.reqGetPayInfo(this.orderId)
+   if (res.code === 200) {
+      this.payInfo = res.data
+   } else {
+      console.log(res.message)
+   }
+}
+,
 ```
-
-
 
 ## 5.ElementUI组件库
 
@@ -1692,9 +1639,9 @@ antd-mobile【蚂蚁金服旗下的移动端UI组件库】
 
 第二步：在入口文件引入ElementUI组件库
 
-​	第一种：全部引入【不采用：因为项目中只是用到一个组件，没必要全都引入进来】
+​ 第一种：全部引入【不采用：因为项目中只是用到一个组件，没必要全都引入进来】
 
-​	第二种：按需引入【按照开发需求引入相应的组件，并非全部组件引入】
+​ 第二种：按需引入【按照开发需求引入相应的组件，并非全部组件引入】
 
 第三步：按需引入，安装相应的插件
 
@@ -1703,7 +1650,6 @@ antd-mobile【蚂蚁金服旗下的移动端UI组件库】
 文档中说的.babelrc文件，即为babel.config.js文件
 
 修改完babel.config.js配置文件以后，项目重启
-
 
 第四步：按照需求引入相应的组件即可
 
@@ -1747,7 +1693,6 @@ GET|POST：短轮询，请求发一次，服务器响应一次，完事。
 
 第二种做法：项目务必要上线 + 和后台紧密配合。当用户支付成功以后，需要后台重定向到项目某一个路由中，将支付情况通过URL参数形式传给前端，前端获取到服务器返回的参数，就可以判断了。
 
-
 # day14
 
 ### 1.个人中心路由搭建
@@ -1765,12 +1710,13 @@ router-link 搭配 router-view
 再次用到分页器
 
 ```html
+
 <my-pagination
-    :page-no="page"
-    :page-size="limit"
-    :total="myOrderList.total"
-    :continues="9"
-    @getPageNo="getPageNo">
+        :page-no="page"
+        :page-size="limit"
+        :total="myOrderList.total"
+        :continues="9"
+        @getPageNo="getPageNo">
 </my-pagination>
 ```
 
@@ -1808,48 +1754,48 @@ router-link 搭配 router-view
 
 ```js
 router.beforeEach(async (to, from, next) => {
-  let token = store.state.users.token
-  let name = store.state.users.userInfo.nickName
-  // 如果没有登录
-  if (!token) {
-    if (to.path === '/addcartsuccess' ||
-        to.path === '/shopcart' ||
-        to.path === '/center' ||
-        to.path === '/center/myorder' ||
-        to.path === '/paysuccess' ||
-        to.path === '/pay' ||
-        to.path === '/trade'
-    ) {
-      // 强制跳转到登录页,且添加query参数便于登录后跳转
-      next('/login?redirect=' + to.path)
-      console.log('未登录，禁止跳转到该页面')
-    } else {
-      console.log('未登录，限制访问')
-      next()// 放行
-    }
-  } else { // 否则登录了
-    if (to.path === '/login' || to.path === '/register') {
-      next(false)
-      console.log('已登录，禁止跳转到该页')
-    } else {
-      // 如果没有用户名
-      if (!name) {
-        // 发起请求获取用户名
-        try {
-          await store.dispatch('getUserInfo')
-          next()// 然后放行
-          console.log('未检测到用户名，已重新获取用户名并放行')
-        } catch (e) {
-          console.log('重新获取用户数据失败，尝试清空本地token并重新获取用户名', e.message)
-          removeToken()
-          await store.dispatch('getUserInfo')
-        }
+   let token = store.state.users.token
+   let name = store.state.users.userInfo.nickName
+   // 如果没有登录
+   if (!token) {
+      if (to.path === '/addcartsuccess' ||
+              to.path === '/shopcart' ||
+              to.path === '/center' ||
+              to.path === '/center/myorder' ||
+              to.path === '/paysuccess' ||
+              to.path === '/pay' ||
+              to.path === '/trade'
+      ) {
+         // 强制跳转到登录页,且添加query参数便于登录后跳转
+         next('/login?redirect=' + to.path)
+         console.log('未登录，禁止跳转到该页面')
       } else {
-        next()// 放行
-        console.log('检测到用户名，放行')
+         console.log('未登录，限制访问')
+         next()// 放行
       }
-    }
-  }
+   } else { // 否则登录了
+      if (to.path === '/login' || to.path === '/register') {
+         next(false)
+         console.log('已登录，禁止跳转到该页')
+      } else {
+         // 如果没有用户名
+         if (!name) {
+            // 发起请求获取用户名
+            try {
+               await store.dispatch('getUserInfo')
+               next()// 然后放行
+               console.log('未检测到用户名，已重新获取用户名并放行')
+            } catch (e) {
+               console.log('重新获取用户数据失败，尝试清空本地token并重新获取用户名', e.message)
+               removeToken()
+               await store.dispatch('getUserInfo')
+            }
+         } else {
+            next()// 放行
+            console.log('检测到用户名，放行')
+         }
+      }
+   }
 })
 ```
 
@@ -1858,19 +1804,27 @@ router.beforeEach(async (to, from, next) => {
 ```js
 /*结算页面*/
 {
-  path: '/trade',
-  component: Trade,
-  meta: {show: true},
-  // 路由独享守卫
-  beforeEnter: (to, from, next) => {
-    // 如果是从购物车来
-    if (from.path === '/shopcart') {
-      next() // 放行
-    } else {
-      next(false) // 否则阻止
-    }
-  }
-},
+   path: '/trade',
+           component
+:
+   Trade,
+           meta
+:
+   {
+      show: true
+   }
+,
+   // 路由独享守卫
+   beforeEnter: (to, from, next) => {
+      // 如果是从购物车来
+      if (from.path === '/shopcart') {
+         next() // 放行
+      } else {
+         next(false) // 否则阻止
+      }
+   }
+}
+,
 ```
 
 #### 2.3 扩展：组件内守卫
@@ -1886,8 +1840,6 @@ router.beforeEach(async (to, from, next) => {
 
 `beforeRouteLeave`
 
-
-
 ### 3.打包上线
 
 #### 3.1 打包`npm run build`
@@ -1901,8 +1853,6 @@ router.beforeEach(async (to, from, next) => {
 vue.config,js配置
 
 productionSourceMap: false
-
-
 
 ### 4.路由懒加载
 
@@ -1918,8 +1868,6 @@ productionSourceMap: false
 component: () => import ("@/views/Search"),
 ```
 
-
-
 ### 5.图片懒加载
 
 #### 5.1 vue-lazyload插件
@@ -1934,14 +1882,13 @@ component: () => import ("@/views/Search"),
 // 引入图片懒加载插件
 import VueLazyload from "vue-lazyload";
 import limg from '@/assets/loading.jpg'
+
 Vue.use(VueLazyload, {
-  loading: limg,
+   loading: limg,
 })
 ```
 
 2. 对于需要懒加载的图片标签img，将src属性替换成v-lazy
-
-
 
 ### 6.表单验证
 
@@ -1966,7 +1913,7 @@ Vue官方提供的一个表单验证的插件
 #### 6.2 vee-validate 基本使用
 
 第一步：插件安装与引入
-cnpm i vee-validate@2 --save  安装的插件安装2版本的
+cnpm i vee-validate@2 --save 安装的插件安装2版本的
 
 ```js
 import VeeValidate from 'vee-validate'
@@ -1978,17 +1925,17 @@ Vue.use(VeeValidate)
 
 ```js
 VeeValidate.Validator.localize('zh_CN', {
-messages: {
-...zh_CN.messages,
-is: (field) => `${field}必须与密码相同` // 修改内置规则的 message，让确认密码和密码相同
-},
-attributes: { // 给校验的 field 属性名映射中文名称
-phone: '手机号',
-code: '验证码',
-password:'密码',
-password1:'确认密码',
-isCheck:'协议'
-}
+   messages: {
+      ...zh_CN.messages,
+      is: (field) => `${field}必须与密码相同` // 修改内置规则的 message，让确认密码和密码相同
+   },
+   attributes: { // 给校验的 field 属性名映射中文名称
+      phone: '手机号',
+      code: '验证码',
+      password: '密码',
+      password1: '确认密码',
+      isCheck: '协议'
+   }
 })
 ```
 
@@ -1996,12 +1943,12 @@ isCheck:'协议'
 
 ```html
 <input
-          placeholder="请输入你的手机号"
-          v-model="phone"
-          name="phone"
-          v-validate="{ required: true, regex: /^1\d{10}$/ }"
-          :class="{ invalid: errors.has('phone') }"
-        />
+        placeholder="请输入你的手机号"
+        v-model="phone"
+        name="phone"
+        v-validate="{ required: true, regex: /^1\d{10}$/ }"
+        :class="{ invalid: errors.has('phone') }"
+/>
 <span class="error-msg">{{ errors.first("phone") }}</span>
 ```
 
@@ -2011,15 +1958,12 @@ isCheck:'协议'
 
 ```js
 VeeValidate.Validator.extend('agree', {
-validate: value => {
-return value
-},
-getMessage: field => field + '必须同意'
+   validate: value => {
+      return value
+   },
+   getMessage: field => field + '必须同意'
 })
 ```
-
-
-
 
 ------
 
