@@ -46,14 +46,16 @@
       </div>
       <!--横幅其他-->
       <nav class="nav">
-        <a href="#">服装城</a>
-        <a href="#">美妆馆</a>
-        <a href="#">尚品汇超市</a>
-        <a href="#">全球购</a>
-        <a href="#">闪购</a>
-        <a href="#">团购</a>
-        <a href="#">有趣</a>
+        <a href="#">京东五金城</a>
+        <a href="#">京东超市</a>
         <a href="#">秒杀</a>
+        <a href="#">京东家电</a>
+        <a href="#">京东生鲜</a>
+        <a href="#">优惠券</a>
+        <a href="#">PLUS会员</a>
+        <a href="#">拍卖</a>
+        <a href="#">品牌闪购</a>
+        <a href="#">进口好物</a>
       </nav>
     </div>
   </div>
@@ -140,7 +142,8 @@ export default {
 
 <style scoped lang="less">
 .type-nav {
-  border-bottom: 2px solid #e1251b;
+  border-bottom: 1px solid #dddddd;
+  background-color: #fff;
 
   .container {
     width: 1200px;
@@ -155,15 +158,21 @@ export default {
       text-align: center;
       line-height: 45px;
       background-color: rgb(225, 37, 27);
+      border-radius: 30px 0 0 0;
       color: #fff;
       font-size: 16px;
       font-weight: bold;
     }
 
     .nav {
+      min-width: 989px;
+      border-top: 1px solid  #eee;
+      border-right: 1px solid  #eee;
+      border-radius: 0 30px 0 0;
+      box-shadow: 4px -4px 20px -2px #eee;
       a {
         height: 45px;
-        margin: 0 22px;
+        margin: 0 14px;
         display: inline-block;
         line-height: 45px;
         font-size: 16px;
@@ -183,8 +192,9 @@ export default {
       left: 0;
       top: 45px;
       width: 210px;
-      height: 461px;
-      background: #fafafa;
+      height: 475px;
+      margin-top: 1px;
+      background: #fff;
       z-index: 999;
 
       .all-sort-list2 {
@@ -244,7 +254,11 @@ export default {
                   cursor: pointer;
 
                   a {
-                    color: #333 !important;
+                    color: #333 ;
+                    &:hover{
+                      color: #df3033!important;
+                      text-decoration: none;
+                    }
                   }
                 }
 
@@ -264,7 +278,11 @@ export default {
                     border-left: 1px solid #ccc;
 
                     a {
-                      color: #333 !important;
+                      color: #333;
+                      &:hover{
+                        color: #df3033!important;
+                        text-decoration: none;
+                      }
                     }
                   }
                 }

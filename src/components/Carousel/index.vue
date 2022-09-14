@@ -32,7 +32,7 @@ export default {
         this.$nextTick(() => {
           // swiper轮播图逻辑
           // eslint-disable-next-line no-unused-vars
-          var mySwiper = new Swiper(`${'#'+this.idName}`, {
+          const mySwiper = new Swiper(`${'#' + this.idName}`, {
             direction: "horizontal",
             loop: true, // 循环模式
             autoplay: { // 3秒自动播放

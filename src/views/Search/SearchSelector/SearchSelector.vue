@@ -55,6 +55,7 @@ export default {
   border: 1px solid #ddd;
   margin-bottom: 5px;
   overflow: hidden;
+  background-color: #fff;
 
   .logo {
     border-top: 0;

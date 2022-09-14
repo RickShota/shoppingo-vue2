@@ -53,7 +53,7 @@
                name="agree"
                v-validate="{ required: true, 'agree':true }"
                :class="{ invalid: errors.has('agree') }">
-        <span>同意协议并注册《尚品汇用户协议》</span>
+        <span>同意协议《京东用户协议》并注册</span>
         <span class="error-msg">{{ errors.first("agree") }}</span>
       </div>
       <div class="btn">
@@ -62,29 +62,17 @@
     </div>
 
     <!-- 底部 -->
-    <div class="copyright">
-      <ul>
-        <li>关于我们</li>
-        <li>联系我们</li>
-        <li>联系客服</li>
-        <li>商家入驻</li>
-        <li>营销中心</li>
-        <li>手机尚品汇</li>
-        <li>销售联盟</li>
-        <li>尚品汇社区</li>
-      </ul>
-      <div class="address">地址：北京市昌平区宏福科技园综合楼6层</div>
-      <div class="beian">京ICP备19006430号
-      </div>
-    </div>
+    <my-footer></my-footer>
   </div>
 </template>
 
 <script>
 
 
+import MyFooter from "@/components/Footer";
 export default {
   name: 'MyRegister',
+  components: {MyFooter},
   data() {
     return {
       phone: '',
