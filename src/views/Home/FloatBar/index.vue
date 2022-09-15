@@ -65,6 +65,7 @@ export default {
 .gulu-sticky {
   &.sticky {
     position: fixed;
+    z-index: 5;
     top: 0;
   }
 }

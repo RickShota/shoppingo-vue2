@@ -6,7 +6,8 @@ import store from "@/store";
 // 利用create方法创建axios实例
 const requests = axios.create({
   /*配置对象*/
-  baseURL: '/api', // 基础路径
+  // 基础路径:防止打包时proxy代理失效
+  baseURL: (process.env.NODE_ENV==="development")?'/api':'http://gmall-h5-api.atguigu.cn/api',
   timeout: 5000, // 请求超时时间5s
 })
 

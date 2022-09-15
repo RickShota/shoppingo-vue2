@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="split center">
-              <img src="../images/home/floor-1-4.png"/>
+              <img src="images/floor-1-4.png"/>
             </div>
             <div class="split">
               <span class="floor-x-line"></span>

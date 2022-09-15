@@ -34,7 +34,7 @@ VueRouter.prototype.replace = function (location, res, rej) {
 
 const router = new VueRouter({
   routes,
-  base: '/shopgovue2/',
+  base: '/shoppingo-vue2/',
   // 滚动行为:路由跳转后自动返回顶部
   scrollBehavior() {
     return {y: 0}

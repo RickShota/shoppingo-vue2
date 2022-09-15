@@ -3,7 +3,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <my-carousel :list="bannerList" id="home"></my-carousel>
+        <my-carousel :list="banList" id="home"></my-carousel>
       </div>
       <!--京东快报-->
       <div class="right">
@@ -101,6 +101,28 @@ import {mapState} from "vuex";
 
 export default {
   name: "ListContainer",
+  data() {
+    return {
+      banList:[
+        {
+          "id": "1",
+          "imgObj": "./images/banner1.png"
+        },
+        {
+          "id": "2",
+          "imgObj": "./images/banner2.jpg"
+        },
+        {
+          "id": "3",
+          "imgObj": "./images/banner3.png"
+        },
+        {
+          "id": "4",
+          "imgObj": "./images/banner4.jpg"
+        }
+      ]
+    }
+  },
   mounted() {
     // 派发action，让vuex调用Ajax请求
     this.$store.dispatch('getBannerList');
