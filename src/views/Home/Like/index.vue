@@ -3,11 +3,10 @@
   <div class="like">
     <div class="py-container">
       <div class="title">
-        <h3 class="fl">猜你喜欢</h3>
-        <a href="javascript:;" class="fr tip changeBnt">换一换</a>
+        <p class="fl">- 为你推荐 -</p>
       </div>
       <div class="bd">
-        <ul class="favourate">
+        <ul class="favourite">
           <li>
             <img src="../images/home/like_02.png" alt="" />
             <div class="like-text">
@@ -43,8 +42,112 @@
               <h3>¥116.00</h3>
             </div>
           </li>
+        </ul>
+        <ul class="favourite">
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
           <li>
             <img src="../images/home/like_01.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+        </ul>
+        <ul class="favourite">
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_01.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+        </ul>
+        <ul class="favourite">
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_01.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_02.png" alt="" />
+            <div class="like-text">
+              <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
+              <h3>¥116.00</h3>
+            </div>
+          </li>
+          <li>
+            <img src="../images/home/like_03.png" alt="" />
             <div class="like-text">
               <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
               <h3>¥116.00</h3>
@@ -72,34 +175,22 @@ export default {
 
     .title {
       overflow: hidden;
-
+      margin-bottom: 10px;
       .fl {
-        float: left;
-        font-size: 20px;
+        float: contour;
+        text-align: center;
+        font-size: 25px;
         line-height: 30px;
-      }
-
-      .fr {
-        float: right;
-        background-image: url(../images/home/icons.png);
-        width: 66px;
-        height: 25px;
-        background-position: 182px -104px;
-        line-height: 30px;
-        font-size: 12px;
-        font-weight: 400;
-        color: #666;
-        text-decoration: none;
       }
     }
 
     .bd {
-      .favourate {
-        border: 1px solid #e4e4e4;
-        overflow: hidden;
-        padding: 0 10px;
-        box-sizing: border-box;
+      .favourite {
         display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+        padding: 5px 10px;
+        box-sizing: border-box;
 
         li {
           height: 250px;
@@ -107,7 +198,9 @@ export default {
           overflow: hidden;
           background: #fff;
           position: relative;
-          width: 16.667%;
+          box-shadow: 1px 1px 8px -6px #333;
+          border-radius: 10px;
+          width: 225px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -127,15 +220,15 @@ export default {
           .like-text {
             padding: 0;
             width: 142px;
-            border-right: 1px solid #e4e4e4;
 
             p {
               margin: 5px 0;
+              font-size: 14px;
             }
 
             h3 {
               color: #df3033;
-              font-size: 20px;
+              font-size: 18px;
               line-height: 30px;
               margin: 9px 0;
               font-weight: 700;

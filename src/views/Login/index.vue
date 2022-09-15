@@ -6,7 +6,7 @@
         <div class="loginform">
           <ul class="tab clearFix">
             <li>
-              <a href="##" style="border-right: 0;">扫描登录</a>
+              <a href="##" style="border-right: 0;">扫码登录</a>
             </li>
             <li>
               <a href="##" class="current">账户登录</a>
@@ -16,11 +16,11 @@
           <div class="content">
             <form action="##">
               <div class="input-text clearFix">
-                <span></span>
+                <span class="up-img"><img src="./images/user.png" alt=""></span>
                 <input type="text" placeholder="邮箱/用户名/手机号" v-model="phone">
               </div>
               <div class="input-text clearFix">
-                <span class="pwd"></span>
+                <span class="up-img"><img src="./images/pw.png" alt=""></span>
                 <input type="password" placeholder="请输入密码" v-model="password">
               </div>
               <div class="setting clearFix">
@@ -98,6 +98,7 @@ export default {
       width: 420px;
       height: 406px;
       box-sizing: border-box;
+      border-radius: 10px;
       background: #fff;
       float: right;
       top: 45px;
@@ -105,7 +106,6 @@ export default {
       padding: 20px;
 
       .tab {
-
         li {
           width: 50%;
           float: left;
@@ -149,18 +149,19 @@ export default {
           .input-text {
             margin-bottom: 16px;
 
-            span {
+            .up-img {
               float: left;
               width: 37px;
               height: 32px;
               border: 1px solid #ccc;
-              background: url(../../assets/images/icons.png) no-repeat -10px -201px;
               box-sizing: border-box;
               border-radius: 2px 0 0 2px;
-            }
-
-            .pwd {
-              background-position: -72px -201px;
+              background-color: #f3f3f3;
+              text-align: center;
+              line-height: 46px;
+              img{
+                width: 25px;
+              }
             }
 
             input {
@@ -189,11 +190,10 @@ export default {
           }
 
           .btn {
-            background-color: #e1251b;
+            background: #e2231a;
             padding: 6px;
-            border-radius: 0;
+            border-radius: 10px;
             font-size: 16px;
-            font-family: 微软雅黑;
             word-spacing: 4px;
             border: 1px solid #e1251b;
             color: #fff;
@@ -201,6 +201,9 @@ export default {
             height: 36px;
             margin-top: 25px;
             outline: none;
+            &:hover {
+              background: #c81623;
+            }
           }
         }
 

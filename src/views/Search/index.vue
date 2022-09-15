@@ -16,22 +16,22 @@
             <!--分类面包屑-->
             <li class="with-x"
                 v-if="searchParams.categoryName"
-                @click="removeCategoryName">{{ searchParams.categoryName }}<i>×</i>
+                >{{ searchParams.categoryName }}<i @click="removeCategoryName">×</i>
             </li>
             <!--关键字面包屑-->
             <li class="with-x"
                 v-if="searchParams.keyword"
-                @click="removeKeyword">{{ searchParams.keyword }}<i>x</i>
+                >{{ searchParams.keyword }}<i @click="removeKeyword">×</i>
             </li>
             <!--品牌面包屑-->
             <li class="with-x"
                 v-if="searchParams.trademark"
-                @click="removeTrademark">{{ searchParams.trademark.split(":")[1] }}<i>x</i>
+                >{{ searchParams.trademark.split(":")[1] }}<i @click="removeTrademark">×</i>
             </li>
             <!--属性面包屑-->
             <li class="with-x"
                 v-for="(item,index) in searchParams.props" :key="index"
-                @click="removeAttr(index)">{{ item.split(":")[1] }}<i>x</i>
+                >{{ item.split(":")[1] }}<i @click="removeAttr(index)">×</i>
             </li>
           </ul>
         </div>
@@ -51,12 +51,12 @@
               <!-- 综合|价格排序的地方 -->
               <ul class="sui-nav">
                 <li :class="{active:isOne}" @click="changeOrder('1')">
-                  <a>综合<span v-show="isOne" class="iconfont"
+                  <a>综合&nbsp;<span v-show="isOne" class="iconfont"
                                :class="{'icon-Downxiangxia9':isDesc,'icon-Upxiangshang9':isAsc}">
                       </span></a>
                 </li>
                 <li :class="{active:isTwo}" @click="changeOrder('2')">
-                  <a>价格<span v-show="isTwo" class="iconfont"
+                  <a>价格&nbsp;<span v-show="isTwo" class="iconfont"
                                :class="{'icon-Downxiangxia9':isDesc,'icon-Upxiangshang9':isAsc}">
                       </span></a>
                 </li>
@@ -265,20 +265,22 @@ export default {
 
 <style scoped lang="less">
 .main {
-  margin: 10px 0;
+  margin: 5px 0;
 
   .py-container {
     width: 1200px;
     margin: 0 auto;
+    background-color: #fff;
 
     .bread {
       margin-bottom: 5px;
+      height: 30px;
       overflow: hidden;
       user-select: none;
-
+      border-top: 1px solid #e4e4e4;
+      text-align: center;
       .sui-breadcrumb {
-        padding: 3px 15px;
-        margin: 0;
+        margin: 8px;
         font-weight: 400;
         border-radius: 3px;
         float: left;
@@ -286,6 +288,7 @@ export default {
         li {
           display: inline-block;
           line-height: 18px;
+
 
           a {
             color: #666;
@@ -300,15 +303,14 @@ export default {
       }
 
       .sui-tag {
-        margin-top: -5px;
+        margin-top: 7px;
         list-style: none;
         font-size: 0;
         line-height: 0;
-        padding: 5px 0 0;
-        margin-bottom: 18px;
         float: left;
 
         .with-x {
+        text-align: center;
           font-size: 12px;
           margin: 0 5px 5px 0;
           display: inline-block;
@@ -330,17 +332,18 @@ export default {
             display: inline-block;
             height: 100%;
             vertical-align: middle;
+          &:hover {
+            color: #e3001a;
+          }
           }
 
-          &:hover {
-            color: #28a3ef;
-          }
         }
       }
     }
 
     .details {
       margin-bottom: 5px;
+      padding-bottom: 15px;
 
       .sui-navbar {
         overflow: visible;
@@ -400,6 +403,7 @@ export default {
             line-height: 28px;
 
             .list-wrap {
+              border: 1px solid #eee;
               .p-img {
                 padding-left: 15px;
                 width: 215px;
@@ -409,8 +413,10 @@ export default {
                   color: #666;
 
                   img {
-                    max-width: 100%;
+                    max-width: 200px;
                     height: auto;
+                    margin-top: 20px;
+                    text-align: center;
                     vertical-align: middle;
                   }
                 }

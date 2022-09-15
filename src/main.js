@@ -14,10 +14,11 @@ Vue.component('my-pagination', Pagination)
 // 全局注册API
 import * as API from '@/api'
 // 部分引入element-ui
-import { MessageBox,Button } from 'element-ui';
+import { MessageBox,Button,Backtop } from 'element-ui';
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$msgbox = MessageBox;
-Vue.component(Button.name,Button)
+Vue.component(Button.name,Button);
+Vue.use(Backtop)
 // 引入图片懒加载插件
 import VueLazyload from "vue-lazyload";
 import limg from '@/assets/loading.jpg'

@@ -96,7 +96,7 @@ export default {
             a {
               padding-top: 1px;
               font-weight: 400;
-              background-color: #fff;
+
 
               &::after {
                 content: "|";
@@ -134,7 +134,7 @@ export default {
           .blockgary {
             width: 210px;
             height: 100%;
-            background: #f7f7f7;
+            background: #fff;
 
             .jd-list {
               padding: 15px 0;

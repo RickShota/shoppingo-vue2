@@ -12,6 +12,7 @@ const requests = axios.create({
 
 // 请求拦截器
 requests.interceptors.request.use(config=>{
+  // 进度条插件开始加载
   nprogress.start();
   // 如果仓库有游客令牌，塞入请求头
   if (store.state.detail.uuid_token){
@@ -25,7 +26,7 @@ requests.interceptors.request.use(config=>{
 })
 // 响应拦截器
 requests.interceptors.response.use(res=>{
-  // 成功回调
+  // 成功回调:进度条插件加载完成
   nprogress.done();
   return res.data
 },error => {

@@ -402,7 +402,11 @@ export default {
 .detail {
   .con {
     width: 1200px;
-    margin: 15px auto 0;
+    margin: 10px auto 0;
+    padding: 10px 30px 20px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
 
     .conPoin {
       padding: 9px 15px 9px 0;

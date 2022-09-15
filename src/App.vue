@@ -2,6 +2,9 @@
   <div id="app">
     <!--头部-->
     <my-header></my-header>
+    <!--回到顶部element插件-->
+    <el-backtop :visibility-height="400">顶</el-backtop>
+    <!--路由视窗-->
     <router-view></router-view>
     <!-- 路由元信息:控制哪些路由显示页足-->
     <my-footer v-show="$route.meta.show"></my-footer>

@@ -2,7 +2,7 @@
   <div class="register-container">
     <!-- 注册内容 -->
     <div class="register">
-      <h3>注册新用户
+      <h3>欢迎注册
         <span class="go">我有账号，去 <a href="#login" target="_blank">登陆</a>
         </span>
       </h3>
@@ -116,7 +116,9 @@ export default {
     width: 1200px;
     height: 445px;
     border: 1px solid rgb(223, 223, 223);
-    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 10px auto;
 
     h3 {
       background: #ececec;
@@ -146,6 +148,7 @@ export default {
       margin-bottom: 18px;
       position: relative;
 
+
       label {
         font-size: 14px;
         width: 96px;
@@ -161,10 +164,12 @@ export default {
         margin-left: 5px;
         outline: none;
         border: 1px solid #999;
+        border-radius: 5px;
       }
 
       button {
         vertical-align: center;
+        margin-left: 20px;
         height: 38px;
         width: 90px;
       }
@@ -198,19 +203,21 @@ export default {
       line-height: 36px;
       margin: 17px 0 0 55px;
 
+
       button {
         outline: none;
         cursor: pointer;
-        width: 270px;
-        height: 36px;
-        background: #e1251b;
+        width: 290px;
+        height: 45px;
+        background: #e2231a;
         color: #fff !important;
         display: inline-block;
         font-size: 16px;
+        border-radius: 5px;
         border: none;
 
         &:hover {
-          background: #ef2f26;
+          background: #c81623;
         }
       }
     }
